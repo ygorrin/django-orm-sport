@@ -263,7 +263,7 @@
 <h1>2.7 todas las ligas con un jugador (actual) llamado "Sophia"</h1>
 <ol>
 	{% for league in liga_sophia %}
-	<li>{{league.teams.curr_players.first_name}}</li>
+	<li>{{league.name}}</li>
 	{% empty %}
 	<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
 			href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
