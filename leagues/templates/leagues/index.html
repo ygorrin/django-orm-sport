@@ -347,10 +347,18 @@
 	{% endfor %}
 </ol>
 <hr>
-<!-- 
 
+<h1>2.15 todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos para los que han jugado</h1>
+<ol>
+	{% for player in jugador_equipos %}
+	<li>{{player.first_name}} {{player.last_name}}  =  {{player.num_teams}} </li>
+	{% empty %}
+	<p>No teams found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
+			href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+	{% endfor %}
+</ol>
+<hr>
 
-... 2.15 todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos para los que han jugado -->
 
 	<hr>
 	<h1>Leagues</h1>

@@ -42,9 +42,9 @@ def index(request):
 		"jugador_wichita": Player.objects.filter(all_teams__location__contains="Wichita").exclude(curr_team__location__contains="Wichita"),
 		"equipo_jacob": Team.objects.filter(all_players__first_name = "Jacob").filter(all_players__last_name = "Gray").exclude(team_name__contains = "Colts"),
 		"jugador_joshua": Player.objects.filter(first_name__contains="Joshua").filter(all_teams__league__name="Atlantic Amateur Field Hockey League"),
-		"q": Team.objects.annotate(Count('all_players__id')),
-		#"equipo_doce": Team.objects.filter(team12__gte=12),
-	
+		"equipo_doce":Team.objects.annotate(num_players=Count('all_players')).filter(num_players__gte=12),
+		"jugador_equipos": Player.objects.annotate(num_teams=Count('all_teams')).order_by('num_teams'), 
+
 	}
 	return render(request, "leagues/index.html", context)
 
